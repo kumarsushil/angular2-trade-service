@@ -1,0 +1,43 @@
+<title>{{ title }}</title>
+<h3 class="header-style">Trade Account Security Details</h3>
+<div class="container-fluid">  
+  <button class="btn btn-primary" type="submit" (click)="onSearch()">
+    Search
+  </button>
+</div>
+
+<div class="container-fluid" style="white-space: pre">
+  <table>
+    <tr *ngIf="requestFinished === true && requestValid === true">
+      <th>TradeId</th>
+      <th>Account</th>
+      <th>Security ID</th>
+      <th>ID Source</th>
+      <th>ISIN</th>
+      <th>SEDOL</th>
+      <th>CUSIP</th>
+      <th>RIC</th>
+      <th>Ticker</th>
+      <th>Quantity</th>
+      <th>Price</th>
+    </tr>  
+
+      <tr *ngFor="let trade of tradeMessageDetails">
+        <td>{{ trade.tradeId }}</td>
+        <td>{{ trade.account }}</td>
+        <td>{{ trade.securityId }}</td>
+        <td>{{ trade.idSource }}</td>
+        <td>{{ trade.isin }}</td>
+        <td>{{ trade.sedol }}</td>
+        <td>{{ trade.cusip }}</td>
+        <td>{{ trade.ric }}</td>
+        <td>{{ trade.ticker }}</td>
+        <td>{{ trade.qty }}</td>
+        <td>{{ trade.price }}</td>
+    </tr>
+  </table>
+</div>
+
+<div class="header-style" *ngIf="requestValid === false">
+  {{ errorMessage }}
+</div>
